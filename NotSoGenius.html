@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,20 +7,31 @@
     <title>Not So Genius - Music Lyrics</title>
 
     <style>
-      body {
-        height: 100%;
-        height: 100%;
-        width: 100%
-      }
-      div.result {
-        width: 100%;
-        height: 100%;
-        overflow: scroll;
-        text-align: center;
-      }
+        body {
+            height: 100%;
+            height: 100%;
+            width: 100%;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-size: 16px;
+        }
+        div.result {
+            width: 100%;
+            height: 550px;
+            overflow: scroll;
+            text-align: center;
+            border-top: 2px solid purple;
+            border-bottom: 2px solid purple;
+        }
       div.searchContainer {
         text-align: center;
       }
+        button.searchButton {
+            padding: 4px;
+            margin: 12px;
+            background: purple;
+            color: white;
+            font-size: 15px;
+        }
     </style>
 
   </head>
@@ -32,7 +43,7 @@
       <p>Song title:</p>
       <input id="songTextBox" type="text">
     </br>
-      <button id="searchButton">Search</button>
+      <button id="searchButton" class="searchButton">Search</button>
     </div>
     <div class="result" id="resultContainer">
       
@@ -60,12 +71,13 @@
         });
     });
 
-    function search(artist, song){
+      function search(artist, song) {
+        $(resultContainer).text("");
         $.getJSON(("https://api.lyrics.ovh/v1/" + artist + "/" + song), function(data){
-        var text = data.lyrics.toString();
-        var array = text.toString().split("\n");
-        array.forEach(function(item){
-            resultContainer.append("<p>" + item + "</p>");
+          var text = data.lyrics.toString();
+          var array = text.toString().split("\n");
+          array.forEach(function(item){
+          resultContainer.append("<p>" + item + "</p>");
         });
         console.log(array);
     });
