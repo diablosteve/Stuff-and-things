@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
         body {
             height: 100%;
             height: 100%;
-            width: 100%;
+            width: 96%;
             font-family: "Comic Sans MS", cursive, sans-serif;
             font-size: 16px;
         }
@@ -71,16 +71,18 @@
         });
     });
 
-      function search(artist, song) {
+    function search(artist, song) {
         $(resultContainer).text("");
+
         $.getJSON(("https://api.lyrics.ovh/v1/" + artist + "/" + song), function(data){
-          var text = data.lyrics.toString();
-          var array = text.toString().split("\n");
-          array.forEach(function(item){
-          resultContainer.append("<p>" + item + "</p>");
-        });
-        console.log(array);
-    });
+            var text = data.lyrics.toString();
+            var array = text.toString().split("\n");
+            array.forEach(function(item){
+                resultContainer.append("<p>" + item + "</p>");
+            });
+        }).fail(function () {
+            $(resultContainer).text("Not found :c");
+        });;
 }
   
   </script>
