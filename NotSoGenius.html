@@ -14,6 +14,12 @@
             font-family: "Comic Sans MS", cursive, sans-serif;
             font-size: 16px;
         }
+
+        p.things {
+            font-size: 22px;
+            margin: 6px;
+        }
+
         div.result {
             width: 100%;
             height: 300px;
@@ -32,16 +38,22 @@
             color: white;
             font-size: 15px;
         }
+        input.textBox {
+            height: 25px;
+            border-radius: 5px;
+            padding: 1px;
+            border-color: purple;
+        }
     </style>
 
   </head>
 
   <body>
     <div class="searchContainer">
-      <p>Artist:</p>
-      <input id="artistTextBox" type="text">
-      <p>Song title:</p>
-      <input id="songTextBox" type="text">
+      <p class="things">Artist:</p>
+      <input id="artistTextBox" class="textBox" type="text">
+      <p class="things">Song title:</p>
+      <input id="songTextBox" class="textBox" type="text">
     </br>
       <button id="searchButton" class="searchButton">Search</button>
     </div>
