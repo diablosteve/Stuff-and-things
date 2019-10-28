@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <title>Not So Genius - Music Lyrics</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <style type="text/css">
         body {
             height: 100%;
@@ -22,9 +22,7 @@
         div.result {
             width: 100%;
             height: 300px;
-
-            overflow: scroll;
-            overflow-x: hidden;
+            overflow: auto;
             text-align: center;
             border-top: 2px solid purple;
             border-bottom: 2px solid purple;
@@ -55,24 +53,64 @@
             border-radius: 5px;
             padding: 1px 10px;
             border-color: purple;
+            display: block;
+            margin: auto;
         }
         #songTextBox{
             display: block;
             margin: auto;
+        }
+
+        @media (max-width: 991px) {
+            .header.hideP p {
+                display: none;
+            }
+
+            h1 {
+                font-size: 20px;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+
+            .header {
+                text-align: center;
+            }
+
+                .header p {
+                    margin: 0;
+                    font-size: 12px;
+                }
+
+            p.things {
+                font-size: 20px;
+            }
+
+            .header.hideP:after {
+                content: "...";
+                position: absolute;
+                top: 0;
+                right: 10px;
+                background: purple;
+                color: white;
+                padding: 0px 9px 7px;
+                border-radius: 24px;
+            }
         }
     </style>
 
   </head>
 
   <body>
-    <h1>Hi everbody,</h1>
-    <p>
-        This is a page for find your lovely songs lyrics.
-    </p>
-    <p>
-        Please use this ultimate website. If you are a develeper, be carefull. :)
-    </p>
-    <div class="searchContainer">
+    <div class="header col-md-offset-2 col-md-4">
+      <h1>Hi everbody,</h1>
+      <p>
+          This is a page for find your lovely songs lyrics.
+      </p>
+      <p>
+          Please use this ultimate website. If you are a develeper, be carefull. :)
+      </p>
+    </div>
+    <div class="searchContainer col-md-4">
       <p class="things">Artist:</p>
       <input id="artistTextBox" class="textBox" type="text">
       <p class="things">Song title:</p>
@@ -80,7 +118,7 @@
    
       <button id="searchButton" class="searchButton">Search</button>
     </div>
-    <div class="result" id="resultContainer">
+    <div class="result col-md-12" id="resultContainer">
       
     </div>
   </body>
@@ -89,6 +127,18 @@
     var artistTextBox;
     var songTextBox;
     var resultContainer;
+    $(document).ready(function(){
+        var doc = $(this);
+        $(".header").on("click", function () {
+            if (doc.width() < 992) {
+                if ($(this).hasClass("hideP")) {
+                    $(this).removeClass("hideP");
+                } else {
+                    $(this).addClass("hideP");
+                }
+            }
+        });
+    });
 
     window.addEventListener("load", function() {
         this.document.body.width = window.screen.width;
