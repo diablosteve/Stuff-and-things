@@ -24,6 +24,7 @@
             width: 100%;
             height: 300px;
             overflow: scroll;
+            overflow-x: hidden;
             text-align: center;
             border-top: 2px solid purple;
             border-bottom: 2px solid purple;
@@ -47,17 +48,28 @@
             padding: 1px;
             border-color: purple;
         }
+        #songTextBox{
+            display: block;
+            margin: auto;
+        }
     </style>
 
   </head>
 
   <body>
+    <h1>Hi everbody,</h1>
+    <p>
+        This is a page for find your lovely songs lyrics.
+    </p>
+    <p>
+        Please use this ultimate website. If you are a develeper, be carefull. :)
+    </p>
     <div class="searchContainer">
       <p class="things">Artist:</p>
       <input id="artistTextBox" class="textBox" type="text">
       <p class="things">Song title:</p>
       <input id="songTextBox" class="textBox" type="text">
-    </br>
+   
       <button id="searchButton" class="searchButton">Search</button>
     </div>
     <div class="result" id="resultContainer">
